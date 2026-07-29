@@ -23,7 +23,7 @@ function initBot() {
     const chatId = msg.chat.id;
     const firstName = msg.from.first_name || 'Foydalanuvchi';
 
-    const welcomeMessage = 
+    const welcomeMessage =
       `👋 <b>Salom, ${firstName}!</b>\n\n` +
       `🚀 <b>Telegram Digital Services Do'koniga xush kelibsiz!</b>\n\n` +
       `Bizning botimiz orqali siz quyidagi xizmatlarni qulay va tezkor xarid qilishingiz mumkin:\n\n` +
@@ -65,14 +65,14 @@ function initBot() {
   // Handler for /help command
   bot.onText(/\/help/, (msg) => {
     const chatId = msg.chat.id;
-    const helpText = 
+    const helpText =
       `❓ <b>Qanday foydalaniladi?</b>\n\n` +
       `1️⃣ <b>"Do'konni Ochish"</b> tugmasini bosing.\n` +
       `2️⃣ O'zingizga kerakli bo'limni tanlang (Stars, Premium, Gifts, Numbers).\n` +
       `3️⃣ Kerakli paket va Telegram useringizni kiritib buyurtma bering.\n` +
       `4️⃣ Stars va Premium okamertan <b>fragment-api.uz</b> orqali yetkazib beriladi.\n\n` +
       `📞 Qo'llab-quvvatlash: Admin bilan bog'lanish uchun WebApp ichidagi yordam tugmasidan foydalaning.`;
-    
+
     bot.sendMessage(chatId, helpText, { parse_mode: 'HTML' });
   });
 
@@ -105,7 +105,7 @@ function initBot() {
         const data = JSON.parse(msg.web_app_data.data);
         const chatId = msg.chat.id;
 
-        const confirmationMsg = 
+        const confirmationMsg =
           `✅ <b>Buyurtmangiz qabul qilindi!</b>\n\n` +
           `📦 <b>Xizmat:</b> ${data.service_name}\n` +
           `👤 <b>Qabul qiluvchi:</b> @${data.target_username}\n` +
@@ -117,14 +117,14 @@ function initBot() {
 
         // Notify Admin if ADMIN_CHAT_ID is set
         if (process.env.ADMIN_CHAT_ID) {
-          const adminNotice = 
+          const adminNotice =
             `🔔 <b>Yangi Buyurtma Keldi!</b>\n\n` +
             `👤 Foydalanuvchi: ${msg.from.first_name} (@${msg.from.username || 'yoq'})\n` +
             `📦 Xizmat: ${data.service_name}\n` +
             `🎯 Qabul qiluvchi: @${data.target_username}\n` +
             `💰 Narxi: ${data.price_formatted}\n` +
             `🆔 Order ID: ${data.order_id}`;
-          
+
           bot.sendMessage(process.env.ADMIN_CHAT_ID, adminNotice, { parse_mode: 'HTML' });
         }
       } catch (err) {
