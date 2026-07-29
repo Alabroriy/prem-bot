@@ -1,0 +1,28 @@
+{
+  "name": "telegram-digital-store-bot",
+  "version": "1.0.0",
+  "description": "Telegram WebApp Bot for Telegram Premium, Stars, Gifts, and Numbers via fragment-api.uz",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "webapp",
+    "stars",
+    "premium",
+    "fragment",
+    "gifts"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}
