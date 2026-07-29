@@ -5,6 +5,13 @@ dotenv.config();
 const token = process.env.BOT_TOKEN;
 const webappUrl = process.env.WEBAPP_URL || 'http://localhost:3000';
 
+function createWebAppButton(text, url) {
+  if (url && url.startsWith('https://')) {
+    return { text: text, web_app: { url: url } };
+  }
+  return { text: text, url: url };
+}
+
 let bot;
 
 function initBot() {
@@ -39,10 +46,7 @@ function initBot() {
       reply_markup: {
         inline_keyboard: [
           [
-            {
-              text: '🛍 Do\'konni Ochish (Web App)',
-              web_app: { url: webappUrl }
-            }
+            createWebAppButton('🛍 Do\'konni Ochish (Web App)', webappUrl)
           ],
           [
             { text: '⭐️ Stars', callback_data: 'cat_stars' },
@@ -89,7 +93,7 @@ function initBot() {
         parse_mode: 'HTML',
         reply_markup: {
           inline_keyboard: [[
-            { text: '📱 Web App do\'konini ochish', web_app: { url: webappUrl } }
+            createWebAppButton('📱 Web App do\'konini ochish', webappUrl)
           ]]
         }
       });
